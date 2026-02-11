@@ -188,3 +188,30 @@ class BaseDatos:
         if resultado is not None:
             return resultado[0] 
         return None
+    
+    def crear_tabla_cripto(self):
+        orden_sql = """
+        CREATE TABLE IF NOT EXISTS cripto (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nombre TEXT,
+        precio REAL,
+        fecha DATETIME DEFAULT CURRENT_TIMESTAMP)
+        """
+        self.cursor.execute(orden_sql)
+        self.conexion.commit()
+    
+    def registrar_precios_cripto(self, nombre, precio):
+        orden_sql = "INSERT INTO cripto (nombre, precio) VALUES (?, ?)"
+        self.cursor.execute(orden_sql,(nombre, precio))
+        self.conexion.commit()
+
+    def consultar_precio_cripto(self):
+        orden_sql = "SELECT * FROM cripto"
+        self.cursor.execute(orden_sql)
+        respuesta = self.cursor.fetchall()
+
+        for i in respuesta:
+            print(f"ID:{i[0]} | Nombre:{i[1]} | Precio:{i[2]} | Fecha: {i[3]}")
+
+        return respuesta
+

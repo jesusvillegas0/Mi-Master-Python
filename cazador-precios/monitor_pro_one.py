@@ -73,21 +73,26 @@ try:
 
         precio_anterior = db.obtener_ultimo_precio(p["nombre"])
 
-        precio_num = 19.0
+        precio_num = 49.0
 
         if precio_anterior is None:
             db.registrar_monitoreo(p['nombre'], precio_num, esta_disponible)
             print(f"{p['nombre']}: Primer registro guardado ({precio_num}£)")
 
         elif precio_num < precio_anterior:
+            minimo_historico = db.obtener_precio_minimo(p["nombre"])
+            print(minimo_historico)
             ahorro = precio_anterior - precio_num
             db.registrar_monitoreo(p["nombre"], precio_num, esta_disponible)
             print("Alerta oferta")
             print(f"\n{p['nombre']} ha bajado {round(ahorro, 2)}£. Precio actual: {precio_num}£)")
 
-            texo_alerta = f"Oferta detectada \nProducto: {p['nombre']}\nBajo: {round(ahorro, 2)}£\nPrecio actual: {precio_num}£"
+            texto_alerta = f"Oferta detectada \nProducto: {p['nombre']}\nBajo: {round(ahorro, 2)}£\nPrecio actual: {precio_num}£"
 
-            enviar_telegram(texo_alerta)
+            if precio_num <= minimo_historico:
+                texto_alerta += f"\n Es el precio mas bajo registrado hasta ahora"
+
+            enviar_telegram(texto_alerta)
             time.sleep(5)
             #print("Notificacion enviada a Telegram")
 
