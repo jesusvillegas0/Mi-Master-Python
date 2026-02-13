@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 from base_datos import BaseDatos
+import clima_pro
+import monitor_crypto
 
 app = Flask(__name__)
 
@@ -45,6 +47,20 @@ def ver_datos():
     criptos, clima = db.obtener_historial_completo()
 
     return render_template('index.html', lista_criptos=criptos, lista_clima=clima)
-    
+
+@app.route('/actualizar-ahora', methods=['POST'])
+def actualizar_ahora():
+    try:
+        btc = monitor_crypto.consultar_precios()
+        temp = clima_pro.consultar_clima_pro()
+
+        db.registrar_precios_cripto("Bitcoin", btc[0])
+        db.registrar_clima_proyecto(temp[1])
+
+        return jsonify({"status": "ok", "btc": btc[0], "temp": temp[0]}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "mensaje": str(e)}), 500
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5000)

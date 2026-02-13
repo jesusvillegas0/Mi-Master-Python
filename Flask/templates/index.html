@@ -34,5 +34,30 @@
             </table>
         </section>
     </div>
+    <button id="btn-actualizar" class="btn-pro">🔄 Actualizar Datos Ahora</button>
+
+<script>
+document.getElementById('btn-actualizar').onclick = function() {
+    this.innerText = "⏳ Actualizando...";
+    this.disabled = true;
+
+    // Enviamos la petición POST al servidor
+    fetch('/actualizar-ahora', { method: 'POST' })
+    .then(response => response.json())
+    .then(data => {
+        if(data.status === 'ok') {
+            alert("✅ Datos actualizados: BTC $" + data.btc);
+            location.reload(); // Recarga la página para ver los nuevos datos en la tabla
+        } else {
+            alert("❌ Error: " + data.mensaje);
+        }
+    })
+    .catch(error => console.error('Error:', error))
+    .finally(() => {
+        this.innerText = "🔄 Actualizar Datos Ahora";
+        this.disabled = false;
+    });
+};
+</script>
 </body>
 </html>
