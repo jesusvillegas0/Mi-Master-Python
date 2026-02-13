@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Control Valencia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Centro de Monitoreo DevOps</h1>
+        <p>Reporte para mi bebé y Valencia 2026</p>
+
+        <section class="card">
+            <h2>💰 Criptomonedas</h2>
+            <table>
+                <tr><th>Moneda</th><th>Precio</th></tr>
+                {% for registro in lista_criptos %}
+                <tr>
+                    <td>{{ registro[1] }}</td>
+                    <td>${{ registro[2] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+
+        <section class="card">
+            <h2>🌡️ Clima</h2>
+            <table>
+                <tr><th>Temperatura</th></tr>
+                {% for registro in lista_clima %}
+                <tr>
+                    <td>{{ registro[1] }}°C</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </section>
+    </div>
+</body>
+</html>

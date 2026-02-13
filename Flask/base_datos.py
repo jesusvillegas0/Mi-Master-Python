@@ -2,7 +2,7 @@ import sqlite3
 
 class BaseDatos:
     def __init__(self, nombre_bd):
-        self.conexion = sqlite3.connect(nombre_bd)
+        self.conexion = sqlite3.connect(nombre_bd, check_same_thread=False)
         self.cursor = self.conexion.cursor()
         self.crear_tablas()
     
@@ -227,4 +227,15 @@ class BaseDatos:
         self.cursor.execute(orden_sql,(clima,))
         self.conexion.commit()
 
+    def obtener_historial_completo(self):
+        orden_sql_cripto = "SELECT * FROM cripto ORDER BY id DESC LIMIT 10"
+        orden_sql_clima = "SELECT * FROM clima ORDER BY id DESC LIMIT 10"
+
+        self.cursor.execute(orden_sql_cripto)
+        criptos = self.cursor.fetchall()
+
+        self.cursor.execute(orden_sql_clima)
+        clima = self.cursor.fetchall()
+
+        return criptos, clima
 
