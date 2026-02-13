@@ -56,3 +56,19 @@ th { background-color: #3498db; color: white; }
     background-color: #bdc3c7;
     cursor: not-allowed;
 }
+
+.precio-subio {
+    color: #27ae60; /* Verde */
+    border-left: 5px solid #27ae60;
+    padding-left: 10px;
+}
+
+.precio-bajo {
+    color: #e74c3c; /* Rojo */
+    border-left: 5px solid #e74c3c;
+    padding-left: 10px;
+}
+
+.precio-neutral {
+    color: #2c3e50;
+}

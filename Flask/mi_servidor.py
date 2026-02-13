@@ -46,7 +46,17 @@ def recibir_reporte():
 def ver_datos():
     criptos, clima = db.obtener_historial_completo()
 
-    return render_template('index.html', lista_criptos=criptos, lista_clima=clima)
+    tendencia = "neutral"
+    if len(criptos) >= 2:
+        precio_actual = criptos[0][2]
+        precio_anterior = criptos[1][2]
+
+        if precio_actual > precio_anterior:
+            tendencia = "subio"
+        elif precio_actual < precio_anterior:
+            tendencia = "bajo"
+    
+    return render_template('index.html', lista_criptos=criptos, lista_clima=clima, tendencia=tendencia)
 
 @app.route('/actualizar-ahora', methods=['POST'])
 def actualizar_ahora():

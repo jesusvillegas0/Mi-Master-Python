@@ -10,7 +10,10 @@
         <p>Reporte para mi bebé y Valencia 2026</p>
 
         <section class="card">
-            <h2>💰 Criptomonedas</h2>
+            <h2 class="precio-{{ tendencia }}">
+                    💰 Criptomonedas 
+                    {% if tendencia == 'subio' %} 📈 {% elif tendencia == 'bajo' %} 📉 {% endif %}
+                </h2>
             <table>
                 <tr><th>Moneda</th><th>Precio</th></tr>
                 {% for registro in lista_criptos %}
