@@ -229,7 +229,7 @@ class BaseDatos:
 
     def obtener_historial_completo(self):
         orden_sql_cripto = "SELECT * FROM cripto ORDER BY id DESC LIMIT 10"
-        orden_sql_clima = "SELECT * FROM clima ORDER BY id DESC LIMIT 10"
+        orden_sql_clima = "SELECT * FROM clima ORDER BY id ASC LIMIT 10"
 
         self.cursor.execute(orden_sql_cripto)
         criptos = self.cursor.fetchall()

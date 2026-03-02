@@ -31,7 +31,7 @@
                 <tr><th>Temperatura</th></tr>
                 {% for registro in lista_clima %}
                 <tr>
-                    <td>{{ registro[1] }}°C</td>
+                    <td>{{ registro[0] }}°C</td>
                 </tr>
                 {% endfor %}
             </table>
@@ -49,7 +49,7 @@ document.getElementById('btn-actualizar').onclick = function() {
     .then(response => response.json())
     .then(data => {
         if(data.status === 'ok') {
-            alert("✅ Datos actualizados: BTC $" + data.btc);
+            alert("✅ Datos actualizados:\n BTC $" + data.btc + "\n Clima: " + data.temp + "°C");
             location.reload(); // Recarga la página para ver los nuevos datos en la tabla
         } else {
             alert("❌ Error: " + data.mensaje);

@@ -1,0 +1,277 @@
+
+R5#
+R5#terminal width 511
+R5#terminal length 0
+R5#
+R5#
+R5#
+R5#show run | section voice register
+voice register global
+ mode cme
+ source-address 192.168.150.55 port 5060
+ max-dn 30
+ max-pool 30
+ authenticate register
+ create profile sync 0000637294227433
+voice register dn  1
+ number 1801
+ name Usuario_1801
+voice register dn  2
+ number 1502
+ name Extension_1502
+voice register dn  3
+ number 1503
+ name Extension_1503
+voice register dn  4
+ number 1504
+ name Extension_1504
+voice register dn  5
+ number 1505
+ name Extension_1505
+voice register dn  6
+ number 1506
+ name Extension_1506
+voice register dn  7
+ number 1507
+ name Extension_1507
+voice register dn  8
+ number 1508
+ name Extension_1508
+voice register dn  9
+ number 1509
+ name Extension_1509
+voice register dn  10
+ number 1510
+ name Extension_1510
+voice register dn  11
+ number 1511
+ name Extension_1511
+voice register dn  12
+ number 1512
+ name Extension_1512
+voice register dn  13
+ number 1513
+ name Extension_1513
+voice register dn  14
+ number 1514
+ name Extension_1514
+voice register dn  15
+ number 1515
+ name Extension_1515
+voice register dn  16
+ number 1516
+ name Extension_1516
+voice register dn  17
+ number 1517
+ name Extension_1517
+voice register dn  18
+ number 1518
+ name Extension_1518
+voice register dn  19
+ number 1519
+ name Extension_1519
+voice register dn  20
+ number 1520
+ name Extension_1520
+voice register dn  21
+ number 1521
+ name Extension_1521
+voice register dn  22
+ number 1522
+ name Extension_1522
+voice register dn  23
+ number 1523
+ name Extension_1523
+voice register dn  24
+ number 1524
+ name Extension_1524
+voice register dn  25
+ number 1525
+ name Extension_1525
+voice register dn  26
+ number 1528
+ name jesus
+voice register pool  1
+ id mac 0000.0000.0000
+ number 1 dn 1
+ dtmf-relay rtp-nte
+ username 1801 password 1234
+ codec g711ulaw
+voice register pool  2
+ id mac 0000.0000.0000
+ number 1 dn 2
+ username 1502 password 1234
+voice register pool  3
+ id mac 0000.0000.0000
+ number 1 dn 3
+ username 1503 password 1234
+voice register pool  4
+ id mac 0000.0000.0000
+ number 1 dn 4
+ username 1504 password 1234
+voice register pool  5
+ id mac 0000.0000.0000
+ number 1 dn 5
+ username 1505 password 1234
+voice register pool  6
+ id mac 0000.0000.0000
+ number 1 dn 6
+ username 1506 password 1234
+voice register pool  7
+ id mac 0000.0000.0000
+ number 1 dn 7
+ username 1507 password 1234
+voice register pool  8
+ id mac 0000.0000.0000
+ number 1 dn 8
+ username 1508 password 1234
+voice register pool  9
+ id mac 0000.0000.0000
+ number 1 dn 9
+ username 1509 password 1234
+voice register pool  10
+ id mac 0000.0000.0000
+ number 1 dn 10
+ username 1510 password 1234
+voice register pool  11
+ id mac 0000.0000.0000
+ number 1 dn 11
+ username 1511 password 1234
+voice register pool  12
+ id mac 0000.0000.0000
+ number 1 dn 12
+ username 1512 password 1234
+voice register pool  13
+ id mac 0000.0000.0000
+ number 1 dn 13
+ username 1513 password 1234
+voice register pool  14
+ id mac 0000.0000.0000
+ number 1 dn 14
+ username 1514 password 1234
+voice register pool  15
+ id mac 0000.0000.0000
+ number 1 dn 15
+ username 1515 password 1234
+voice register pool  16
+ id mac 0000.0000.0000
+ number 1 dn 16
+ username 1516 password 1234
+voice register pool  17
+ id mac 0000.0000.0000
+ number 1 dn 17
+ username 1517 password 1234
+voice register pool  18
+ id mac 0000.0000.0000
+ number 1 dn 18
+ username 1518 password 1234
+voice register pool  19
+ id mac 0000.0000.0000
+ number 1 dn 19
+ username 1519 password 1234
+voice register pool  20
+ id mac 0000.0000.0000
+ number 1 dn 20
+ username 1520 password 1234
+voice register pool  21
+ id mac 0000.0000.0000
+ number 1 dn 21
+ username 1521 password 1234
+voice register pool  22
+ id mac 0000.0000.0000
+ number 1 dn 22
+ username 1522 password 1234
+voice register pool  23
+ id mac 0000.0000.0000
+ number 1 dn 23
+ username 1523 password 1234
+voice register pool  24
+ id mac 0000.0000.0000
+ number 1 dn 24
+ username 1524 password 1234
+voice register pool  25
+ id mac 0000.0000.0000
+ number 1 dn 25
+ username 1525 password 1234
+voice register pool  26
+R5#
+R5#configure terminal
+Enter configuration commands, one per line.  End with CNTL/Z.
+R5(config)#
+R5(config)#voice register dn 27
+R5(config-register-dn)# number 1526
+R5(config-register-dn)# name jesus
+R5(config-register-dn)#exit
+R5(config)#voice register pool 27
+R5(config-register-pool)# id mac 0000.0000.0000
+R5(config-register-pool)# number 1 dn 27
+R5(config-register-pool)# username 1526 password 1234
+R5(config-register-pool)#exit
+R5(config)#voice register global
+R5(config-register-global)#create profile
+R5(config-register-global)#
+R5(config-register-global)#end
+R5#
+R5#
+R5#show voice register statistics | include Total|Active
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+  Active registrations  : 0
+  Total Registration Statistics
+R5#
+R5#show voice register sessions
+                        ^
+% Invalid input detected at '^' marker.
+
+R5#
+R5#exit
