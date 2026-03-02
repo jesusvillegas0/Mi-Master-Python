@@ -4,9 +4,9 @@ import re
 # Datos del router
 device = {
     'device_type': 'cisco_ios',
-    'host': '0.0.0.0',
+    'host': '192.168.150.55',
     'username': 'admin1',
-    'password': 'xxxxxx',
+    'password': 'Tama1234.',
     'fast_cli': False,
     'session_log': 'log_output.txt'
 }

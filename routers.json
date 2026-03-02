@@ -1,10 +1,10 @@
 {
     "router_lab": {
         "device_type": "cisco_ios",
-        "host": "192.168.150.55",
+        "host": "192.168.1.1",
         "username": "admin1",
-        "password": "Tama1234.",
-        "secret": "Tama1234.",
+        "password": "0000.",
+        "secret": "0000",
         "port": 22,
         "session_log": "log_router_lab.txt"
     }
